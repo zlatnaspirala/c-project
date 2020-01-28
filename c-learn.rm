@@ -1,0 +1,39 @@
+
+### The C Preprocessor ###
+
+There are essentially three uses of the preprocessor--directives, constants, and macros.
+Directives are commands that tell the preprocessor to skip part of a file, include another file,
+or define a constant or macro. Directives always begin with a sharp sign (#) and for readability
+should be placed flush to the left of the page. All other uses of the preprocessor involve 
+processing #define'd constants or macros. Typically, constants and macros are written in ALL CAPS
+to indicate they are special (as we will see).
+
+
+#### Basic app: ####
+
+```
+#include <stdio.h>
+int main()
+{
+    printf( "I am alive!  Beware.\n" );
+    getchar();
+    return 0;
+}
+```
+
+Read : 
+
+```
+#include <stdio.h>
+ 
+int main()
+{
+    int this_is_a_number;
+ 
+    printf( "Please enter a number: " );
+    scanf( "%d", &this_is_a_number );
+    printf( "You entered %d", this_is_a_number );
+    getchar();
+    return 0;
+}
+```
