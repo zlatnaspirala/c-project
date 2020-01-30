@@ -4,14 +4,94 @@
 There are essentially three uses of the preprocessor--directives, constants, and macros.
 Directives are commands that tell the preprocessor to skip part of a file, include another file,
 or define a constant or macro. Directives always begin with a sharp sign (#) and for readability
-should be placed flush to the left of the page. All other uses of the preprocessor involve 
+should be placed flush to the left of the page. All other uses of the preprocessor involve
 processing #define'd constants or macros. Typically, constants and macros are written in ALL CAPS
 to indicate they are special (as we will see).
 
+` directives `
+#include
+#define
 
-#### Basic app: ####
+` constants `
+#define [identifier name] [value]
+
+also
+
+#define [identifier name]
+
+```c
+#ifndef NULL
+#define NULL (void *)0
+#endif // #ifndef NULL
+```
+
+` macrocs `
+#define MACRO_NAME(arg1, arg2, ...) [code to expand to]
+
+
+```c
+
+#define INCREMENT(x) x++
+
+#define PI_PLUS_ONE(3.14 + 1)
+
+x = PI_PLUS_ONE * 5;
+x = 3.14 + 1 * 5;
+x = 8.14
+
+#define MULT(x, y) x * y
+int z = MULT(3 + 2, 4 + 2);
+int z = 3 + 2 * 4 + 2;    // 2 * 4 will be evaluated first!
+
+#define MULT(x, y) (x) * (y)
+// now MULT(3 + 2, 4 + 2) will expand to (3 + 2) * (4 + 2)
 
 ```
+
+Variables
+```c
+Type	Format String	Description
+char	 %c  	Character type variables (ASCII values)
+int	   %d	  The most natural size of integer for the machine.
+float	 %f	  A single-precision floating point value.
+double %e	  A double-precision floating point value.
+void	− N/A −	Represents the absence of type.
+```
+
+ Relational operators:
+```c
+>     greater than              5 > 4 is TRUE
+<     less than                 4 < 5 is TRUE
+>=    greater than or equal     4 >= 4 is TRUE
+<=    less than or equal        3 <= 4 is TRUE
+==    equal to                  5 == 5 is TRUE
+!=    not equal to              5 != 4 is TRUE
+```
+
+### Keywords ###
+
+```c
+  if, else, switch, case, default – Used for decision control programming structure.
+  break – Used with any loop OR switch case.
+  int, float, char, double, long – These are the data types and used during variable declaration.
+  for, while, do – types of loop structures in C.
+  void – One of the return type.
+  goto – Used for redirecting the flow of execution.
+  auto, signed, const, extern, register, unsigned – defines a variable.
+  return – This keyword is used for returning a value.
+  continue – It is generally used with for, while and dowhile loops, when compiler encounters this statement it performs the next iteration of the loop, skipping rest of the statements of current iteration.
+  enum – Set of constants.
+  sizeof – It is used to know the size.
+  struct, typedef  – Both of these keywords used in structures (Grouping of data types in a single record).
+  union – It is a collection of variables, which shares the same memory location and memory storage.
+  volatile
+```
+
+-----------------------------------------------------------------------
+#### Basic app: ####
+-----------------------------------------------------------------------
+
+```c
 #include <stdio.h>
 int main()
 {
@@ -21,15 +101,15 @@ int main()
 }
 ```
 
-Read : 
+Read :
 
-```
+```c
 #include <stdio.h>
- 
+
 int main()
 {
     int this_is_a_number;
- 
+
     printf( "Please enter a number: " );
     scanf( "%d", &this_is_a_number );
     printf( "You entered %d", this_is_a_number );
@@ -37,3 +117,18 @@ int main()
     return 0;
 }
 ```
+
+
+-----------------------------------------------------------------------
+#### Networking ####
+-----------------------------------------------------------------------
+
+Get socket os data:
+
+```c
+man socket
+```
+
+
+Source links:
+https://www.cprogramming.com/tutorial/cpreprocessor.html
