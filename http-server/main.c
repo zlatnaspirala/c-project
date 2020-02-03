@@ -1,5 +1,5 @@
 
-#include "httpd.h"
+#include "include/httpd.h"
 
 int main(int c, char **v)
 {
@@ -20,5 +20,14 @@ void route()
     printf("Wow, seems that you POSTed %d bytes. \r\n", payload_size);
     printf("Fetch the data using `payload` variable.");
   }
+
+  ROUTE_POST("/test")
+  {
+    printf("TEST d%",  payload);
+    printf("HTTP/1.1 200 OK\r\n\r\n");
+    printf("Wow, seems that you POSTed %d bytes. \r\n", payload);
+    printf("Fetch the data using `payload` variable.");
+  }
+
   ROUTE_END()
 }
