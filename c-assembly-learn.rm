@@ -1,0 +1,354 @@
+
+### Basic Features of PC Hardware ###
+
+The main internal hardware of a PC consists of the processor, memory and the registers.
+The registers are processor components that hold data and address. To execute a program
+the system copies it from the external device into the internal memory. The processor
+executes the program instructions. The fundamental unit of computer storage is a bit;
+it could be on (1) or off (0). A group of nine related bits makes a byte. Eight bits are
+used for data and the last one is used for parity. According to the rule of parity, number
+of bits that are on (1) in each byte should always be odd.
+So the parity bit is used to make the number of bits in a byte odd. If the parity is even,
+the system assumes that there had been a parity error (though rare) which might have caused
+due to hardware fault or electrical disturbance.
+
+<b>The processor supports the following data sizes:</b>
+
+ Word: a 2-byte data item
+ Doubleword: a 4-byte (32 bit) data item
+ Quadword: an 8-byte (64 bit) data item
+ Paragraph: a 16-byte (128 bit) area
+ Kilobyte: 1024 bytes
+ Megabyte: 1,048,576 bytes
+
+
+### The C Preprocessor ###
+
+There are essentially three uses of the preprocessor--directives, constants, and macros.
+Directives are commands that tell the preprocessor to skip part of a file, include another file,
+or define a constant or macro. Directives always begin with a sharp sign (#) and for readability
+should be placed flush to the left of the page. All other uses of the preprocessor involve
+processing #define'd constants or macros. Typically, constants and macros are written in ALL CAPS
+to indicate they are special (as we will see).
+
+` directives `
+#include
+#define
+
+` constants `
+#define [identifier name] [value]
+
+also
+
+#define [identifier name]
+
+```c
+#ifndef NULL
+#define NULL (void *)0
+#endif // #ifndef NULL
+```
+
+` macrocs `
+#define MACRO_NAME(arg1, arg2, ...) [code to expand to]
+
+
+```c
+
+#define INCREMENT(x) x++
+
+#define PI_PLUS_ONE(3.14 + 1)
+
+x = PI_PLUS_ONE * 5;
+x = 3.14 + 1 * 5;
+x = 8.14
+
+#define MULT(x, y) x * y
+int z = MULT(3 + 2, 4 + 2);
+int z = 3 + 2 * 4 + 2;    // 2 * 4 will be evaluated first!
+
+#define MULT(x, y) (x) * (y)
+// now MULT(3 + 2, 4 + 2) will expand to (3 + 2) * (4 + 2)
+```
+
+<b>Variables</b>
+```c
+Type	Format String	Description
+char	 %c  	Character type variables (ASCII values)
+int	   %d	  The most natural size of integer for the machine.
+float	 %f	  A single-precision floating point value.
+double %e	  A double-precision floating point value.
+void	− N/A −	Represents the absence of type.
+```
+
+<b>Relational operators:</b>
+```c
+>     greater than              5 > 4 is TRUE
+<     less than                 4 < 5 is TRUE
+>=    greater than or equal     4 >= 4 is TRUE
+<=    less than or equal        3 <= 4 is TRUE
+==    equal to                  5 == 5 is TRUE
+!=    not equal to              5 != 4 is TRUE
+```
+
+<b>Keywords</b>
+```c
+  if, else, switch, case, default – Used for decision control programming structure.
+  break – Used with any loop OR switch case.
+  int, float, char, double, long – These are the data types and used during variable declaration.
+  for, while, do – types of loop structures in C.
+  void – One of the return type.
+  goto – Used for redirecting the flow of execution.
+  auto, signed, const, extern, register, unsigned – defines a variable.
+  return – This keyword is used for returning a value.
+  continue – It is generally used with for, while and dowhile loops, when compiler encounters this statement it performs the next iteration of the loop, skipping rest of the statements of current iteration.
+  enum – Set of constants.
+  sizeof – It is used to know the size.
+  struct, typedef  – Both of these keywords used in structures (Grouping of data types in a single record).
+  union – It is a collection of variables, which shares the same memory location and memory storage.
+  volatile
+```
+
+Integer Types
+The following table provides the details of standard integer types with their storage sizes and value ranges −
+
+```
+Type	Storage size	Value range
+char  1  byte	-128 to 127 or 0 to 255
+unsigned char	1 byte	0 to 255
+signed char	1 byte	-128 to 127
+int	2 or 4 bytes	-32,768 to 32,767 or -2,147,483,648 to 2,147,483,647
+unsigned int	2 or 4 bytes	0 to 65,535 or 0 to 4,294,967,295
+short	2 bytes	-32,768 to 32,767
+unsigned short	2 bytes	0 to 65,535
+long	8 bytes	-9223372036854775808 to 9223372036854775807
+unsigned long	8 bytes	0 to 18446744073709551615
+```
+
+-----------------------------------------------------------------------
+#### Basic app: ####
+-----------------------------------------------------------------------
+
+```c
+#include <stdio.h>
+int main()
+{
+    printf( "I am alive!  Beware.\n" );
+    getchar();
+    return 0;
+}
+```
+
+Read :
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int this_is_a_number;
+
+    printf( "Please enter a number: " );
+    scanf( "%d", &this_is_a_number );
+    printf( "You entered %d", this_is_a_number );
+    getchar();
+    return 0;
+}
+```
+
+
+-----------------------------------------------------------------------
+#### Networking ####
+-----------------------------------------------------------------------
+
+Get socket os data:
+
+```c
+man socket
+```
+
+#### Character Constants ####
+
+Character literals are enclosed in single quotes, e.g., 'x' can be stored in
+a simple variable of char type.A character literal can be a plain character (e.g., 'x'),
+an escape sequence (e.g., '\t'), or a universal character (e.g., '\u02C0'). There are certain
+characters in C that represent special meaning when preceded by a backslash for example,
+newline (\n) or tab (\t).
+
+Here, you have a list of such escape sequence codes −
+Escape sequence	Meaning:
+```
+\\	\ character
+\'	' character
+\"	" character
+\?	? character
+\a	Alert or bell
+\b	Backspace
+\f	Form feed
+\n	Newline
+\r	Carriage return
+\t	Horizontal tab
+\v	Vertical tab
+\ooo	Octal number of one to three digits
+\xhh . . .	Hexadecimal number of one or more digits
+```
+
+
+------------------------------------------------------------------------
+## Assembly part ##
+------------------------------------------------------------------------
+
+An assembly program can be divided into three sections:
+ − The data section
+ - The bss section
+ - The text section
+
+
+#### The data Section ####
+
+The data section is used for declaring initialized data or constants. This data does
+not change at runtime. You can declare various constant values, file names, or buffer
+size, etc., in this section.
+
+The syntax for declaring data section is:
+```
+section.data
+```
+
+#### The bss Section ####
+The bss section is used for declaring variables. The syntax for declaring bss section is:
+```
+section.bss
+```
+
+#### The text section ####
+The text section is used for keeping the actual code. This section must begin with
+the declaration global _start, which tells the kernel where the program execution begins.
+
+The syntax for declaring text section is:
+```
+section.text
+   global _start
+_start:
+```
+
+#### Syntax of Assembly Language Statements ####
+Assembly language statements are entered one statement per line.
+Each statement follows the following format:
+
+```
+  [label]   mnemonic   [operands]   [;comment]
+```
+
+```
+section	.text
+   global _start    ;must be declared for linker (ld)
+
+_start:	            ;tells linker entry point
+   mov	edx,len     ;message length
+   mov	ecx,msg     ;message to write
+   mov	ebx,1       ;file descriptor (stdout)
+   mov	eax,4       ;system call number (sys_write)
+   int	0x80        ;call kernel
+
+   mov	eax,1       ;system call number (sys_exit)
+   int	0x80        ;call kernel
+
+section	.data
+msg db 'Hello, world!', 0xa  ;string to be printed
+len equ $ - msg     ;length of the string
+```
+
+
+Differences between NASM, MASM, and GAS
+
+The complete syntactic specification of each assembly language can be found elsewhere,
+but you can learn 99% of what you need to know by looking at a comparison table:
+
+<pre>
+Operation	NASM	MASM	GAS
+Move contents of esi into ebx	mov ebx, esi	movl %esi, %ebx
+Move contents of si into dx	mov dx, si	movw %si, %dx
+Clear the eax register	xor eax, eax	xorl %eax, %eax
+Move immediate value 10 into register al	mov al, 10	movb $10, %al
+Move contents of address 10 into register ecx	mov ecx, [10]	I DON’T KNOW	movl 10, %ecx
+Move contents of variable dog into register eax	mov eax, [dog]	mov eax, dog	movl dog, %eax
+Move address of variable dog into register eax	mov eax, dog	I DON’T KNOW	movl $dog, %eax
+Move immediate byte value 10 into memory pointed to by edx	mov byte [edx], 10	mov byte ptr [edx], 10	movb $10, (%edx)
+Move immediate 16-bit value 10 into memory pointed to by edx	mov word [edx], 10	mov word ptr [edx], 10	movw $10, (%edx)
+Move immediate 32-bit value 10 into memory pointed to by edx	mov dword [edx], 10	mov dword ptr [edx], 10	movl $10, (%edx)
+Compare eax to the contents of memory 8 bytes past the cell pointed to by ebp	cmp eax, [ebp+8]	cmpl $8(%ebp), %eax
+Add into esi the value in memory ecx quadwords past the cell pointed to by eax	add esi, [eax+ecx*8]	addl (%eax,%ecx,8), %esi
+Add into esi the value in memory ecx doublewords past 128 bytes past the cell pointed to by eax	add esi, [eax+ecx*4+128]	addl $128(%eax,%ecx,4), %esi
+Add into esi the value in memory ecx doublewords past eax bytes past the beginning of the variable named array	add esi, [eax+ecx*4+array]	addl array(%eax,%ecx,4), %esi
+Add into esi the value in memory ecx words past the beginning of the variable named array	add esi, [ecx*2+array]	addl array(,%ecx,2), %esi
+Move the immediate value 4 into the memory cell pointed to by eax using selector fs	mov byte [fs:eax], 4	mov byte ptr fs:eax, 4	movb $4, %fs:(%eax)
+Jump into another segment	?	jump far S:O	ljmp $S, $O
+Call to another segment	?	call far S:O	lcall $S, $O
+Return from an intersegment call	retf V	ret far V	lret $V
+Sign-extend al into ax	cbw	cbtw
+Sign-extend ax into eax	cwde	cwtl
+Sign-extend ax into dx:ax	cwd	cwtd
+Sign-extend eax into edx:eax	cdq	cltd
+Sign-extend bh into si	movsx si, bh	movsbw %bh, %si
+Sign-extend bh into esi	movsx esi, bh	movsbl %bh, %esi
+Sign-extend cx into esi	movsx esi, cx	movswl %cx, %esi
+Zero-extend bh into si	movzx si, bh	movzbw %bh, %si
+Zero-extend bh into esi	movzx esi, bh	movzbl %bh, %esi
+Zero-extend cx into esi	movzx esi, cx	movzwl %cx, %esi
+100 doublewords, all initialized to 8192	times 100 dd 8192	dd 100 dup (8192)	I DON’T KNOW
+Reserve 64 bytes of storage	resb 64	db 64 dup (?)	.space 64
+Hello World	db 'Hello, World'	.ascii "Hello, World"
+Hello World with a newline, and zero-terminated	db 'Hello, World', 10, 0	.asciz "Hello, World\n"
+
+</pre>
+
+<b>Good to know:</b>
+NASM and MASM use what is sometimes called the Intel syntax, while GAS uses what is called the AT&T syntax.
+GAS uses % to prefix registers
+GAS is source(s) first, destination last; MASM and NASM go the other way.
+GAS denotes operand sizes on instructions (with b, w, l suffixes), rather than on operands
+GAS uses $ for immediates, but also for addresses of variables.
+GAS puts rep/repe/repne/repz/repnz prefixes on separate lines from the instructions they modify
+MASM tries to simplify things for the programmer but makes headaches instead: it tries to "remember" segments,
+variable sizes and so on. The result is a requirement for stupid ASSUME directives, and the inability to tell what
+an instruction does by looking at it (you have to go look for declarations; e.g. dw vs. equ).
+MASM writes FPU registers as ST(0), ST(1), etc.
+NASM treats labels case-sensitively; MASM is case-insensitive.
+
+
+------------------------------------------------------------------------
+#### What is Binary Object File ####
+------------------------------------------------------------------------
+
+ - A binary object file is an object file that contains no header information
+to describe the sections or relocations; the file only contains the raw
+instructions and data present in the input file. This format is needed if
+you want to create a bootloader for instance, or something else that is
+to be run by BIOS, as the BIOS can only read this format.
+
+ - The bin “object format” does not produce object files: the output file
+produced contains only the section data; no headers or relocations are generated.
+The output can be considered “plain binary”, and is useful for operating system
+and boot loader development, generating MS-DOS .COM executables and .SYS device
+drivers, and creating images for embedded target environments (e.g. Flash ROM).
+
+The bin object format supports an unlimited number of named sections. The only
+restriction on these sections is that their storage locations in the output
+file cannot overlap. When used with the x86 architecture, the bin object format
+starts Yasm in 16-bit mode. In order to write native 32-bit or 64-bit code,
+an explicit BITS 32 or BITS 64 directive is required respectively. bin produces
+an output file with no extension by default; it simply strips the  extension from
+the input file name. Thus the default output filename for the input file foo.asm
+is simply foo.
+
+
+
+
+
+### LITERATURE: ###
+<b>Source links for text and example code:</b>
+https://cs.lmu.edu/~ray/notes/x86assembly
+https://www.tutorialspoint.com/assembly_programming/assembly_basic_syntax.htm
+http://www.tortall.net/projects/yasm/manual/html/objfmt-bin.html
+https://www.cprogramming.com/tutorial/cpreprocessor.html
+
