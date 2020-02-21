@@ -1,0 +1,22 @@
+
+<button onclick="sendFormData();" > Send Form data </button>>
+
+<script>
+
+function sendFormData() {
+
+  var formData = new FormData();
+  formData.append("username", "guest");
+  formData.append("password", 123456);
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {//Call a function when the state changes.
+    if (request.readyState == 4 && request.status == 200) {
+      alert(request.responseText);
+    }
+  }
+  request.open("POST", "/");
+  request.send(formData);
+
+}
+
+</script>
