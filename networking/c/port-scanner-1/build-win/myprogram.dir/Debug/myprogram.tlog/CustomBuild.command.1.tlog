@@ -1,0 +1,10 @@
+^E:\WEB_SERVER\XAMPP\HTDOCS\PRIVATE_SERVER\C-PROJECT\C-PROJECT\NETWORKING\C\PORT-SCANNER-1\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/web_server/xampp/htdocs/PRIVATE_SERVER/c-project/c-project/networking/c/port-scanner-1 -BE:/web_server/xampp/htdocs/PRIVATE_SERVER/c-project/c-project/networking/c/port-scanner-1/build-win --check-stamp-file E:/web_server/xampp/htdocs/PRIVATE_SERVER/c-project/c-project/networking/c/port-scanner-1/build-win/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

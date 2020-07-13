@@ -1,6 +1,6 @@
-                              =======================================================
-                                    CHAT APPLICATION IN C USING SOCKET PROGRAMMING
-                              =======================================================
+=======================================================
+      CHAT APPLICATION IN C USING SOCKET PROGRAMMING
+=======================================================
 This is a client - server user-level application using sockets Programming in C. Server accepts strings from clients (even multiple
 strings from each client) and replies with the reverse of the string.
 
@@ -8,7 +8,7 @@ For example:
 when client sends “abcd”, Server replies with “dcba”.
 
 
-Both server and client(s) output's both sending & receiving strings on the terminal.The server and client processes can run on same or 
+Both server and client(s) output's both sending & receiving strings on the terminal.The server and client processes can run on same or
 different machines. Multiple client processes can connect to the same server.
 
 Helper Functions:

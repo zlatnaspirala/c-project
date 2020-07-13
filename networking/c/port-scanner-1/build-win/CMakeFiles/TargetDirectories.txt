@@ -1,0 +1,3 @@
+E:/web_server/xampp/htdocs/PRIVATE_SERVER/c-project/c-project/networking/c/port-scanner-1/build-win/CMakeFiles/myprogram.dir
+E:/web_server/xampp/htdocs/PRIVATE_SERVER/c-project/c-project/networking/c/port-scanner-1/build-win/CMakeFiles/ALL_BUILD.dir
+E:/web_server/xampp/htdocs/PRIVATE_SERVER/c-project/c-project/networking/c/port-scanner-1/build-win/CMakeFiles/ZERO_CHECK.dir
