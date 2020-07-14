@@ -36,9 +36,26 @@
 
 #### Windows ####
 
-No tested.
+ Socket libs are not in compatibility.
+ For windows we need `winsock.h`.
+ I only left cygwin to try with `POSIX` support.
+
+  Worked:
+  `networking\c\port-scanner-1\windows\`
+
+ NOT TESTED : node-media-server project
 
 
+ ### Notes for learning: ###
 
+ ```bash
+  &amp; is the character reference for "An ampersand".
+  -> &
 
-NOT TESTED : node-media-server project
+  &gt;
+  -> >
+
+  &lt;
+  -> <
+
+ ```

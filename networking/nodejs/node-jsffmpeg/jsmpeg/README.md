@@ -185,11 +185,25 @@ ffmpeg \
 	http://localhost:8081/supersecret
 ```
 
-nikola test
+MacOS test:
 ```
   ffmpeg -f avfoundation -framerate 30 -video_size 640x480 -i "0" -f mpegts -codec:v mpeg2video -s 640x480 -b:v 1000k -bf 0 http://localhost:8081/supersecret
 ```
 
+Windows:
+
+```
+ffmpeg -list_devices true -f dshow -i dummy
+
+-f dshow -i video="Integrated Camera"
+
+ffmpeg -f dshow -i video="USB Camera"  -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
+
+ffmpeg -f dshow -i video="USB Camera"  -framerate 30 -video_size 640x480 -codec:v libx264 -s 640x480 -y -rtbufsize 1000M -bf 0 http://localhost:8081/supersecret
+
+-c:v libx264
+
+```
 You should now see a live webcam image in your browser.
 
 If ffmpeg failed to open the input video, it's likely that your webcam does not support the given resolution, format or framerate. To get a list of compatible modes run:
@@ -225,6 +239,9 @@ Note the `muxdelay` argument. This should reduce lag, but doesn't always work wh
 Adding an audio stream to the MPEG-TS can sometimes introduce considerable latency. I especially found this to be a problem on linux using ALSA and V4L2 (using AVFoundation on macOS worked just fine). However, there is a simple workaround: just run two instances of ffmpeg in parallel. One for audio, one for video. Send both outputs to the same Websocket relay. Thanks to the simplicity of the MPEG-TS format, proper "muxing" of the two streams happens automatically in the relay.
 
 ```
+
+LINUX
+
 ffmpeg \
 	-f v4l2 \
 		-framerate 25 -video_size 640x480 -i /dev/video0 \
@@ -233,6 +250,8 @@ ffmpeg \
 		-muxdelay 0.001 \
 	http://localhost:8081/supersecret
 
+
+MACOS
 
 ffmpeg -f avfoundation -framerate 30 -video_size 640x480 -i /dev/video0 -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 -muxdelay 0.001 http://localhost:8081/supersecret
 

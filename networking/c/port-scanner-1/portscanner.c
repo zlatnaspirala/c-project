@@ -1,12 +1,9 @@
-#include "stdio.h"
 
-#ifdef __WIN32__
-# include <winsock2.h>
-# include <windows.h>
-# include <mswsock.h>
-#else
+// Not tested on linux / macos
+// no compile on windows
+
+#include "stdio.h"
 # include <sys/socket.h>
-#endif
 
 #include "errno.h"
 // #include "netdb.h"
