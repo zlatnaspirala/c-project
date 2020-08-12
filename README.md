@@ -6,7 +6,6 @@
 ## Objective: ##
 ### Minimal media server with recording feature and RTC/webRTC support. ###
 
-
 ### Description of structure:
 
   - devices - /multiplatform-capture/openpnp-capture
@@ -19,8 +18,15 @@
     - c/server-client-basic2
     - c/server-client-terminal-chat
 
+## Procedure to run share video output ##
+
+```bash
+node websocket-relay.js supersecret 8081 8082
+npx http-server
+```
 
 ### Test devices list on your computer. ###
+
 ### Run ffmpeg stream ###
 
 #### Mac OS ####
@@ -48,7 +54,16 @@ MACOS
   ffmpeg -list_devices true -f dshow -i dummy
 
   ffmpeg -f dshow -i video="USB Camera"  -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
+
+  ffmpeg -f dshow -i video="@device_pnp_\\?\usb#vid_0c45&pid_6340&mi_00#6&313cdc8e&0&0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global"  -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
+
+  ffmpeg -f dshow -i video="NVIDIA GeForce GTX 650 Ti BOOST"  -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
+
+  // VideoController1
+
 ```
+
+ // test
 
  About `networking/`
  Socket libs are not in compatibility.
