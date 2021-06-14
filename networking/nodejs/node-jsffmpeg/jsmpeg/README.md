@@ -195,19 +195,6 @@ Windows:
 ```
 ffmpeg -list_devices true -f dshow -i dummy
 
-
-ffmpeg -f  gdigrab  -i desktop -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
-
-
-ffmpeg -f  gdigrab  -i desktop -framerate 10 -video_size 640x480 -f mpegts -codec:v libx264 -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
-
-
-test 2
-
-ffmpeg -y -rtbufsize 100M -f gdigrab -t 00:00:30 -framerate 30 -probesize 10M -draw_mouse 1 -i desktop -c:v libx264 -r 30 -preset ultrafast -tune zerolatency -crf 25 -pix_fmt yuv420p http://localhost:8081/supersecret
-
-
-
 -f dshow -i video="Integrated Camera"
 
 ffmpeg -f dshow -i video="USB Camera"  -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
@@ -215,17 +202,6 @@ ffmpeg -f dshow -i video="USB Camera"  -framerate 30 -video_size 640x480 -f mpeg
 ffmpeg -f dshow -i video="USB Camera"  -framerate 30 -video_size 640x480 -codec:v libx264 -s 640x480 -y -rtbufsize 1000M -bf 0 http://localhost:8081/supersecret
 
 -c:v libx264
-
-
-// tes last 2021 
-ffmpeg -f dshow -i -f gdigrab -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
-
-ffmpeg -f gdigrab -framerate 30 -i desktop -c:v h264_nvenc -bf 0 http://localhost:8081/supersecret
-
-
-
-ffmpeg -f dshow -i video="Driver 0" -framerate 30 -video_size 640x480 -f mpegts -codec:v mpeg2video -s 640x480 -rtbufsize 100M -b:v 1000k -bf 0 http://localhost:8081/supersecret
-
 
 ```
 You should now see a live webcam image in your browser.

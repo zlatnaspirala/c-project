@@ -1,2 +1,0 @@
-E:\web_server\xampp\htdocs\PRIVATE_SERVER\c-project\c-project\networking\visual-studio-projects\Port-Scanner\x64\Debug\Port Scanner.exe
-E:\web_server\xampp\htdocs\PRIVATE_SERVER\c-project\c-project\networking\visual-studio-projects\Port-Scanner\x64\Debug\Port Scanner.pdb
