@@ -14,9 +14,26 @@
 	<canvas id="video-canvas"></canvas>
 	<script type="text/javascript" src="jsmpeg.min.js"></script>
 	<script type="text/javascript">
-		var canvas = document.getElementById('video-canvas');
-		var url = 'ws://'+document.location.hostname+':8082/';
-		var player = new JSMpeg.Player(url, {canvas: canvas});
+
+	console.log("Test JSMpeg.Player -> ", JSMpeg.Player )
+	var initialRun = true, 
+	    justOnce = true,
+	    canvas = null,
+			url = null,
+			player = null;
+
+	function runStream() {
+		canvas = document.getElementById('video-canvas');
+		url = 'ws://'+document.location.hostname+':8082/';
+		player = new JSMpeg.Player(url, {canvas: canvas});
+		window.removeEventListener("click", runStream, false)
+	}
+
+	if (initialRun) {
+		runStream();
+	} else {
+		window.addEventListener("click", runStream, false)
+	}
 	</script>
 </body>
 </html>
