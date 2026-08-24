@@ -4,7 +4,7 @@
   "description": "nodejs media server",
   "main": "jsmpeg.min.js",
   "dependencies": {
-    "ws": "^7.4.6"
+    "ws": "^7.5.11"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
